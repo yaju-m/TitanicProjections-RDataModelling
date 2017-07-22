@@ -25,7 +25,7 @@ summary_model <- summary(model)
 
 testing_data5 <- subset(testing_data4,select=c(2,3,4,5,6,7,8,10,12))
 fitted.results <- predict(model,testing_data5,type='response')
-fitted.results <- ifelse(fitted.results > 0.5,1,0)
+fitted.results <- ifelse(fitted.results > 0.5, 1, 0)
 misClasificError <- mean(fitted.results != testing_data4$Survived)
 print(paste('Accuracy',1-misClasificError))
 
