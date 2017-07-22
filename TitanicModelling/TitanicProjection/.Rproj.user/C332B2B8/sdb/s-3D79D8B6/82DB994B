@@ -1,14 +1,14 @@
 {
     "collab_server" : "",
-    "contents" : "Titanic_Raw$Age[is.na(Titanic_Raw$Age)] <- mean(Titanic_Raw$Age,na.rm=T)\ntraining_data2 <- Titanic_Raw[sample(nrow(Titanic_Raw), 800), ]\ntraining_data_ids <- training_data2$PassengerId\norig_data_ids <- Titanic_Raw$PassengerId\n\ntesting_data_ids <- vector(\"list\", 91)\ni <- 1\nfor (id in orig_data_ids) { \n  if (!(id %in% training_data_ids)) { \n      testing_data_ids[[i]] <- id\n      i <- i + 1\n  }\n}\n\ntesting_data4 <- subset(Titanic_Raw, PassengerId %in% testing_data_ids)\n\n#is.na(training_data3) <- training_data3==''\n#is.na(testing_data4) <- testing_data4==''\n#training_data3 <- subset(training_data2,select=c(2,3,5,6,7,8,10,12))\n#library(Amelia)\n#missmap(training_data3, main = \"Missing values vs observed\")\n#model <- glm(Survived ~.,family=binomial(link='logit'),data=training_data3)\n#summary_model <- summary(model)\n\ntesting_data5 <- subset(testing_data4,select=c(2,3,4,5,6,7,8,10,12))\nfitted.results <- predict(model,testing_data5,type='response')\nfitted.results <- ifelse(fitted.results > 0.5,1,0)\nmisClasificError <- mean(fitted.results != testing_data4$Survived)\nprint(paste('Accuracy',1-misClasificError))\n\n\n\n\n",
+    "contents" : "\nTitanic_Raw$Age[is.na(Titanic_Raw$Age)] <- mean(Titanic_Raw$Age,na.rm=T)\ntraining_data2 <- Titanic_Raw[sample(nrow(Titanic_Raw), 800), ]\ntraining_data_ids <- training_data2$PassengerId\norig_data_ids <- Titanic_Raw$PassengerId\n\ntesting_data_ids <- vector(\"list\", 91)\ni <- 1\nfor (id in orig_data_ids) { \n  if (!(id %in% training_data_ids)) { \n      testing_data_ids[[i]] <- id\n      i <- i + 1\n  }\n}\n\ntesting_data4 <- subset(Titanic_Raw, PassengerId %in% testing_data_ids)\n\nis.na(training_data3) <- training_data3==''\nis.na(testing_data4) <- testing_data4==''\ntraining_data3 <- subset(training_data2,select=c(2,3,5,6,7,8,10,12))\nlibrary(Amelia)\nmissmap(training_data3, main = \"Missing values vs observed\")\nmodel <- glm(Survived ~.,family=binomial(link='logit'),data=training_data3)\nsummary_model <- summary(model)\n\ntesting_data5 <- subset(testing_data4,select=c(2,3,4,5,6,7,8,10,12))\nfitted.results <- predict(model,testing_data5,type='response')\nfitted.results <- ifelse(fitted.results > 0.5,1,0)\nmisClasificError <- mean(fitted.results != testing_data4$Survived)\nprint(paste('Accuracy',1-misClasificError))\n\n\n\n\n",
     "created" : 1500624773499.000,
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "2384117812",
+    "hash" : "3873240856",
     "id" : "82DB994B",
-    "lastKnownWriteTime" : 1500704520,
-    "last_content_update" : 1500704520366,
+    "lastKnownWriteTime" : 1500704608,
+    "last_content_update" : 1500704608525,
     "path" : "~/Desktop/TitanicModelling/TitanicProjection/TestDoc.R",
     "project_path" : "TestDoc.R",
     "properties" : {
