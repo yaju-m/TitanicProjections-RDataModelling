@@ -18,8 +18,8 @@ testing_data4 <- subset(Titanic_Raw, PassengerId %in% testing_data_ids)
 is.na(training_data3) <- training_data3==''
 is.na(testing_data4) <- testing_data4==''
 training_data3 <- subset(training_data2,select=c(2,3,5,6,7,8,10,12))
-library(Amelia)
-missmap(training_data3, main = "Missing values vs observed")
+#library(Amelia)
+#missmap(training_data3, main = "Missing values vs observed")
 model <- glm(Survived ~.,family=binomial(link='logit'),data=training_data3)
 summary_model <- summary(model)
 
