@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "data <- read.csv(\"Titanic_Raw.csv\")\nprint(data)\n#retval <- max(data$PClass)\n#retval <- subset(data, PClass == 3)\n#print(retval)\n\n",
+    "created" : 1500624773499.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3898946831",
+    "id" : "82DB994B",
+    "lastKnownWriteTime" : 1500688632,
+    "last_content_update" : 1500688632811,
+    "path" : "~/TitanicProjection/TestDoc.R",
+    "project_path" : "TestDoc.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

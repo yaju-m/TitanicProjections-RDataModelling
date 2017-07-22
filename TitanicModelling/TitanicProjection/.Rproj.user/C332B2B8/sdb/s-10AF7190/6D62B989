@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "training_data_ids <- training_data2$PassengerId\n\n\n\n",
+    "created" : 1500689553943.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1925288744",
+    "id" : "6D62B989",
+    "lastKnownWriteTime" : 1500692923,
+    "last_content_update" : 1500692923415,
+    "path" : "~/Desktop/TitanicProjection/TestDoc.R",
+    "project_path" : "TestDoc.R",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
