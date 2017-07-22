@@ -1,14 +1,14 @@
 {
     "collab_server" : "",
-    "contents" : "\nTitanic_Raw$Age[is.na(Titanic_Raw$Age)] <- mean(Titanic_Raw$Age,na.rm=T)\ntraining_data2 <- Titanic_Raw[sample(nrow(Titanic_Raw), 800), ]\ntraining_data_ids <- training_data2$PassengerId\norig_data_ids <- Titanic_Raw$PassengerId\n\ntesting_data_ids <- vector(\"list\", 91)\ni <- 1\nfor (id in orig_data_ids) { \n  if (!(id %in% training_data_ids)) { \n      testing_data_ids[[i]] <- id\n      i <- i + 1\n  }\n}\n\ntesting_data4 <- subset(Titanic_Raw, PassengerId %in% testing_data_ids)\n\nis.na(training_data3) <- training_data3==''\nis.na(testing_data4) <- testing_data4==''\ntraining_data3 <- subset(training_data2,select=c(2,3,5,6,7,8,10,12))\n#library(Amelia)\n#missmap(training_data3, main = \"Missing values vs observed\")\nmodel <- glm(Survived ~.,family=binomial(link='logit'),data=training_data3)\nsummary_model <- summary(model)\n\ntesting_data5 <- subset(testing_data4,select=c(2,3,4,5,6,7,8,10,12))\nfitted.results <- predict(model,testing_data5,type='response')\nfitted.results <- ifelse(fitted.results > 0.5, 1, 0)\nmisClasificError <- mean(fitted.results != testing_data4$Survived)\nprint(paste('Accuracy',1-misClasificError))\n\n\n\n\n",
+    "contents" : "\n#filling in the gaps for the ages, by putting in the mean of the rest\nTitanic_Raw$Age[is.na(Titanic_Raw$Age)] <- mean(Titanic_Raw$Age,na.rm=T)\n#choosing the training data by randomly selecting 800 rows\ntraining_data2 <- Titanic_Raw[sample(nrow(Titanic_Raw), 800), ]\n\n#finding the id lists for the training data and the total data\ntraining_data_ids <- training_data2$PassengerId\norig_data_ids <- Titanic_Raw$PassengerId\n\n#putting the ids in the original not in training into testing id list\ntesting_data_ids <- vector(\"list\", 91)\ni <- 1\nfor (id in orig_data_ids) { \n  if (!(id %in% training_data_ids)) { \n      testing_data_ids[[i]] <- id\n      i <- i + 1\n  }\n}\n\n#extracting the testing data using the testing id list and the original data\ntesting_data4 <- subset(Titanic_Raw, PassengerId %in% testing_data_ids)\n#selecting all the pertaining columns, exlcuding unneccesary categorical variables,\n#such as fares, ticket numbers, names, etc\ntraining_data3 <- subset(training_data2,select=c(2,3,5,6,7,8,10,12))\ntesting_data5 <- subset(testing_data4,select=c(2,3,4,5,6,7,8,10,12))\n\n#filling all the remaining empty spaces in the training and test data with NA\nis.na(training_data3) <- training_data3==''\nis.na(testing_data4) <- testing_data4==''\n\n#library(Amelia)\n#missmap(training_data3, main = \"Missing values vs observed\")\n\n#create a logistical model (for survival), using the training data. also find the summary\nmodel <- glm(Survived ~.,family=binomial(link='logit'),data=training_data3)\nsummary_model <- summary(model)\n\n#finding the prediction, using the testing data\nfitted.results <- predict(model,testing_data5,type='response')\n#making the predicted values either 1 or 0 (rounding up or down)\nfitted.results <- ifelse(fitted.results > 0.5, 1, 0)\n#finding error by taking mean of values that are wrong\nmisClasificError <- mean(fitted.results != testing_data4$Survived)\n\n#accuracy reading \nprint(paste('Accuracy',1-misClasificError))\n\n\n\n\n",
     "created" : 1500624773499.000,
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "4222956831",
+    "hash" : "3057605534",
     "id" : "82DB994B",
-    "lastKnownWriteTime" : 1500705431,
-    "last_content_update" : 1500705431435,
+    "lastKnownWriteTime" : 1500710932,
+    "last_content_update" : 1500710932637,
     "path" : "~/Desktop/TitanicModelling/TitanicProjection/TestDoc.R",
     "project_path" : "TestDoc.R",
     "properties" : {
