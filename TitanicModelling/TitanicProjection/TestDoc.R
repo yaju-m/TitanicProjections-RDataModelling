@@ -29,6 +29,7 @@ testing_data5 <- subset(testing_data4,select=c(2,3,4,5,6,7,8,10,12))
 is.na(training_data3) <- training_data3==''
 is.na(testing_data4) <- testing_data4==''
 
+#used to make sure that all the neccessary values are filled in
 #library(Amelia)
 #missmap(training_data3, main = "Missing values vs observed")
 
